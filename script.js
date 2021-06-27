@@ -449,6 +449,24 @@ function pairElement(str) {
 
 pairElement("TTGAG");
 
+// soal 9
+
+function fearNotLetter(str) {
+  let a ,b = 0, c = 150
+  if (str) {
+    a = str.charCodeAt(0);
+    while (a <= c && b < str.length) {
+      if (String.fromCharCode(a) !== str.charAt(b)) {
+        return String.fromCharCode(a)
+      }
+      a++, b++;
+    }
+  }
+  return undefined;
+}
+
+console.log(fearNotLetter("stvwx"));
+
 
 
 
