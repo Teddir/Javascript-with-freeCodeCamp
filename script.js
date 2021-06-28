@@ -468,10 +468,73 @@ function fearNotLetter(str) {
 
 console.log(fearNotLetter("stvwx"));
 
+// soal 10
+//============ solusion me
+function uniteUnique(arr) {
+  let nilai = [];
+  arr.map((item) => {
+    nilai.push(item)
+  })
+  console.log(arguments)
+  if (arguments.length >= 2) {
+  arguments[1].map((item) => {
+    if (!arr.includes(item)) {
+      nilai.push(item)
+    }
+  })
+  arguments[2]?.map((item) => {
+    if (!arr.includes(item)) {
+      nilai.push(item)
+    }
+  })
+  arguments[3]?.map((item) => {
+    if (!arr.includes(item)) {
+      nilai.push(item)
+    }
+  })
+  }
+  return nilai;
+}
 
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
 
+//========== solution 2
+function uniteUnique(...arr) {
+  let nilai = [];
+  let kamu = [...arr]
+  for (let a = 0; a < kamu.length; a++) {
+    let newa = kamu[a];
+    for (let k = 0; k < newa.length; k++) {
+      if(!nilai.includes(kamu[a][k])) {
+        nilai.push(kamu[a][k])
+      }
+    }
+  }
+  return nilai;
+}
 
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
 
+// solution simple but people also know what a flat method
+function unitedUnique(...arr) {
+  return [...new Set(arr.flat())]
+}
+console.log(uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]));
+
+// soal 11
+function convertHTML(str) {
+  let a =  Object.values(str).map((item) => {
+      return item.replace(/(<|>|&|"|')/, 
+      item.includes('&') ? '&amp;' : null || 
+      item.includes('<') ? '&lt;' : null ||
+      item.includes('>') ? '&gt;' : null ||
+      item.includes('"') ? '&quot;' : null ||
+      item.includes("'") ? '&apos;' : null)
+  })
+  return a.join('')
+}
+
+console.log(convertHTML("Hamburgers < Pizza < Tacos"));
 
 
 
