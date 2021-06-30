@@ -576,8 +576,144 @@ function isNum(n) {
 
 console.log(sumPrimes(10));
 
+// soal 14
+function smallestCommons(arr) {
+  const [min, max] = arr.sort((a,b) => a - b)
+  const nf = max - min + 1
 
+  let up = 1;
+  for (let a = min; a <= max; a++) {
+    up *= a
+  }
 
+  for (let multiple = max; multiple <= up; multiple += max){
+
+  let dc = 0;
+  for (let i = min; i <= max; i++) {
+    if (multiple % i === 0) {
+      dc += 1
+    }
+  }
+  if (dc === nf) {
+    return multiple
+  }
+}
+
+}
+smallestCommons([1,5]);
+
+// soal 15
+function dropElements(arr, func, i = 0) {
+  return i < arr.length && !func(arr[i])
+  ? (dropElements(arr.slice(i + 1), func, i))
+  : arr;
+}
+
+dropElements([1, 2, 3], function(n) {return n < 3; });
+
+// soal 16
+function steamrollArray(arr) {
+  const flat = [].concat(...arr)
+  return flat.some(Array.isArray) ? steamrollArray(flat) : flat
+}
+
+steamrollArray([1, [2], [3, [[4]]]]);
+
+//soal 17
+function binaryAgent(str) {
+let as = [];
+ let aa = str.split(' ')
+ for (let a = 0; a < aa.length; a++) {
+   as.push(String.fromCharCode(parseInt(aa[a], 2)))
+ }
+  return as.join("");
+}
+
+binaryAgent("01000001 01110010 01100101 01101110 00100111 01110100 
+            00100000 01100010 01101111 01101110 01100110 01101001 01110010 
+            01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111");
+
+//soal 18
+function truthCheck(collection, pre) {
+  return collection.every(elm => elm[pre]);
+}
+
+truthCheck([{"user": "Tinky-Winky", "sex": "male"}, {"user": "Dipsy", "sex": "male"}, {"user": "Laa-Laa", "sex": "female"}, {"user": "Po", "sex": "female"}], "sex");
+
+//soal 19
+function addTogether() {
+  const [aw, ak] = Object.values(arguments)
+
+  if (typeof aw !== "number") {
+    return undefined
+  }
+
+  const addSecond = (ak) => typeof ak === "number" ? aw +   ak : undefined
+
+  if (ak !== undefined) {
+    return addSecond(ak)
+  } else {
+    return addSecond
+  }
+}
+
+console.log(addTogether(2)(3));
+
+//soal 20
+var Person = function(firstAndLast) {
+  // Only change code below this line
+  // Complete the method below and implement the others similarly
+  let full = firstAndLast
+  this.getFullName = function() {
+    return full
+  };
+  
+  this.getFirstName = function() {
+    return full.split(' ')[0]
+  };
+
+  this.getLastName = function() {
+    return full.split(' ')[1]
+  };
+
+  this.setFullName = function(aa) {
+    full = aa 
+  };
+
+  this.setFirstName = function(first) {
+    full = first + " " + full.split(' ')[1]
+  };
+
+  this.setLastName = function(bb) {
+    full = full.split(' ')[0] + ' ' + bb
+  };
+
+  return firstAndLast;
+};
+var bob = new Person('Bob Ross');
+bob.getFullName();
+// console.log(bob.setFullName("Haskell Curry"));
+// console.log(bob.setFirstName("Haskell"));
+// console.log(bob.setLastName("Curry"));
+
+//soal 21
+function orbitalPeriod(arr) {
+  var GM = 398600.4418;
+  var earthRadius = 6367.4447;
+  
+  //rumus  
+  // T = 2 * pi * sqrt(r^3/GM); r = earthRadius + avgAlt
+  
+  arr.map((item) => {
+    let p = Math.round(2 * Math.PI * Math.sqrt(Math.pow(earthRadius + item.avgAlt, 3) / GM))
+    delete item.avgAlt
+    item.orbitalPeriod = p
+  })
+  console.log(arr)
+  return arr;
+}
+
+orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 
 
 
