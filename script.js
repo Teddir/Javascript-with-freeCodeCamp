@@ -553,6 +553,28 @@ function sumFibs(num) {
 sumFibs(4);
 
 //soal 13
+function sumPrimes(num) {
+  if (num <= 0) return 0;
+  let sum = 0;
+  for (let i = 1; i <= num; i++) {
+    if (isNum(i)) {
+      sum += i
+    } 
+  }
+  return sum;
+}
+
+function isNum(n) {
+  if (n <= 1) return 0;
+  for (let a = 2; a <= (n/2); a++) {
+    if (n % a === 0) {
+    return false
+    } 
+  }
+  return true
+}
+
+console.log(sumPrimes(10));
 
 
 
