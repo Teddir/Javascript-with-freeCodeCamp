@@ -536,6 +536,24 @@ function convertHTML(str) {
 
 console.log(convertHTML("Hamburgers < Pizza < Tacos"));
 
+// soal 12
+
+function sumFibs(num) {
+  if(num <= 0) return 0
+
+  const arr = [1, 1]
+  let nextArr = 0;
+  
+  while((nextArr = arr[0] + arr[1]) <= num) {
+    arr.unshift(nextArr)
+  }
+
+  return arr.filter(x => x % 2 != 0).reduce((a, b) =>  a+b)
+}
+sumFibs(4);
+
+//soal 13
+
 
 
 
