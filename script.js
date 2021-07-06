@@ -715,6 +715,59 @@ function orbitalPeriod(arr) {
 
 orbitalPeriod([{name : "sputnik", avgAlt : 35873.5553}]);
 
+// JavaScript Algorithms and Data Structures Projects
+
+// soal 1
+
+function palindrome(str) {
+  let nilai = [];
+  let aa = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, '')
+
+  for (let a = aa.length - 1; a >= 0; a--) {
+    nilai.push(aa[a])
+  }
+    let newNilai = nilai.join('')
+    // console.log(aa, newNilai)
+  return aa === newNilai ? true : false;
+}
+
+console.log(palindrome("My age is 0, 0 si ega ym."));
+
+// soal 2
+
+// soal 3
+
+function rot13(str) {
+  let abjad = [
+    'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
+  
+  let newStr = str.split('')
+  let aa = newStr.map((item) => {
+    let ab = abjad.indexOf(item)
+    if (ab >= 0) {
+      return ab
+    } else {
+      return item
+    }
+  })
+
+  let bb = aa.map((item) => {
+    //cek apakah item number
+    if (typeof item !== 'number') {
+      return item
+    } else if (item < 13) {   //cek apakah item lebih kecil dari 13 jika iya maka tambah 13
+      return abjad[item + 13]
+    } else {
+      return abjad[item - 13]
+    }
+  })  
+
+  return bb.join('');
+}
+
+rot13("SERR PBQR PNZC");
+
+// soal 4
 
 
 
