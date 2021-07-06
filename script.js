@@ -768,7 +768,13 @@ function rot13(str) {
 rot13("SERR PBQR PNZC");
 
 // soal 4
+function telephoneCheck(str) {
+  let req = /^((\+1|1)?( |-)?)?(\([2-9][0-9]{2}\)|[2-9][0-9]{2})( |-)?([2-9][0-9]{2}( |-)?[0-9]{4})$/
 
+  return req.test(str);
+}
+
+telephoneCheck("555-555-5555");
 
 
 
