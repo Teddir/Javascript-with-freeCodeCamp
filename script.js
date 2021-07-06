@@ -734,6 +734,106 @@ function palindrome(str) {
 console.log(palindrome("My age is 0, 0 si ega ym."));
 
 // soal 2
+function convertToRoman(num) {
+  let aa = num.toString()
+  let bb = aa.split('').reverse()
+  let nilai = [];
+
+  const thousands = () => {
+    let remove = num % 1000;
+    let leg = (num - remove) / 1000;
+    // let asek = remove.toString().length;
+    for (let a = 0; a < leg; a++) {
+       nilai.unshift("M")
+    }
+  }
+
+  bb.forEach((item, index) => {
+  switch (index) {
+    case 0:
+    return sigle(item);
+    case 1:
+    return tens(item);
+    case 2:
+    return hundreds(item)
+  }
+  })
+  thousands();
+
+  function sigle(item) {
+    switch(item) {
+      case '1':
+      return nilai.unshift('I');
+      case '2':
+      return nilai.unshift('II');
+      case '3':
+      return nilai.unshift('III');
+      case '4':
+      return nilai.unshift('IV');
+      case '5':
+      return nilai.unshift('V');
+      case '6':
+      return nilai.unshift('VI');
+      case '7':
+      return nilai.unshift('VII');
+      case '8':
+      return nilai.unshift('VIII');
+      case '9':
+      return nilai.unshift('IX');
+    }
+  }
+
+  function tens(item) {
+    switch(item) {
+      case '1':
+      return nilai.unshift('X');
+      case '2':
+      return nilai.unshift('XX');
+      case '3':
+      return nilai.unshift('XXX');
+      case '4':
+      return nilai.unshift('XL');
+      case '5':
+      return nilai.unshift('L');
+      case '6':
+      return nilai.unshift('LX');
+      case '7':
+      return nilai.unshift('LXX');
+      case '8':
+      return nilai.unshift('LXXX');
+      case '9':
+      return nilai.unshift('XC');
+    }
+  }
+
+  function hundreds(item) {  
+    switch(item) {
+      case '1':
+      return nilai.unshift('C');
+      case '2':
+      return nilai.unshift('CC');
+      case '3':
+      return nilai.unshift('CCC');
+      case '4':
+      return nilai.unshift('CD');
+      case '5':
+      return nilai.unshift('D');
+      case '6':
+      return nilai.unshift('DC');
+      case '7':
+      return nilai.unshift('DCC');
+      case '8':
+      return nilai.unshift('DCCC');
+      case '9':
+      return nilai.unshift('CM');
+    }  
+  }
+
+  console.log(nilai.join(''))
+ return nilai.join('');
+}
+
+convertToRoman(3999);
 
 // soal 3
 
