@@ -876,6 +876,261 @@ function telephoneCheck(str) {
 
 telephoneCheck("555-555-5555");
 
+// soal 5
+
+function checkCashRegister(price, cash, cid) {
+  
+  // buat function kali dan bagi
+  let kal = (num) => num * 100;
+  let gi = (num) => num / 100;
+
+  let obj = {}
+
+  // foreach laci
+  cid.forEach((elm) => {
+    obj[elm[0]] = kal(elm[1])
+  })
+
+  // kembalian
+  let change = kal(cash) - kal(price)
+
+  // return nilai
+  let changeObj = { status: "", change: [] }
+
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 10000 && obj["ONE HUNDRED"] >= 10000) {
+
+    // buat modulus
+    let remaind = change % 10000
+
+    // penampung nilai 
+    let numOfHundreds = 
+      (change - remaind) <= obj["ONE HUNDRED"]
+      ? (change - remaind)
+      : obj["ONE HUNDRED"]
+    
+    // console.log(numOfHundreds)
+    
+    // masukan ke return nilai
+    changeObj.change.push(["ONE HUNDRED", gi(numOfHundreds)])
+
+    // kurangi uang di laci dengan kembalian
+    obj['ONE HUNDRED'] -= numOfHundreds
+
+    // kurangi variable change
+    change = change - numOfHundreds
+  }
+
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 2000 && obj["TWENTY"] >= 2000) {
+
+    // buat modulus
+    let remaind = change % 2000
+
+    // penampung nilai 
+    let numOfTwenty = 
+      (change - remaind) <= obj["TWENTY"]
+      ? (change - remaind)
+      : obj["TWENTY"]
+    
+    // console.log(numOfTwenty)
+    
+    // masukan ke return nilai
+    changeObj.change.push(["TWENTY", gi(numOfTwenty)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['TWENTY'] -= numOfTwenty
+
+    // kurangi variable change
+    change = change - numOfTwenty
+  }
+
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 1000 && obj["TEN"] >= 1000) {
+
+    // buat modulus
+    let remaind = change % 1000
+
+    // penampung nilai 
+    let numOfTen = 
+      (change - remaind) <= obj["TEN"]
+      ? (change - remaind)
+      : obj["TEN"]
+    
+    // console.log(numOfTen)
+    
+    // masukan ke return nilai
+    changeObj.change.push(["TEN", gi(numOfTen)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['TEN'] -= numOfTen
+
+    // kurangi variable change
+    change = change - numOfTen
+  }
+
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 500 && obj["FIVE"] >= 500) {
+
+    // buat modulus
+    let remaind = change % 500
+
+    // penampung nilai 
+    let numOfFive = 
+      (change - remaind) <= obj["FIVE"]
+      ? (change - remaind)
+      : obj["FIVE"]
+    
+    
+    // masukan ke return nilai
+    changeObj.change.push(["FIVE", gi(numOfFive)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['FIVE'] -= numOfFive
+
+    // kurangi variable change
+    change = change - numOfFive
+  }
+  
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 100 && obj["ONE"] >= 100) {
+
+    // buat modulus
+    let remaind = change % 100
+
+    // penampung nilai 
+    let numOfOne = 
+      (change - remaind) <= obj["ONE"]
+      ? change - remaind
+      : obj["ONE"]
+    
+    // console.log(numOfOne)
+    
+    // masukan ke return nilai
+    changeObj.change.push(["ONE", gi(numOfOne)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['ONE'] -= numOfOne
+
+    // kurangi variable change
+    change = change - numOfOne
+  }
+
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 25 && obj["QUARTER"] >= 25) {
+
+    // buat modulus
+    let remaind = change % 25
+
+    // penampung nilai 
+    let numOfHundreds = 
+      change - remaind <= obj["QUARTER"]
+      ? change - remaind
+      : obj["QUARTER"]
+    
+    
+    // masukan ke return nilai
+    changeObj.change.push(["QUARTER", gi(numOfHundreds)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['QUARTER'] -= numOfHundreds
+
+    // kurangi variable change
+    change = change - numOfHundreds
+  }
+
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 10 && obj["DIME"] >= 10) {
+
+    // buat modulus
+    let remaind = change % 10
+
+    // penampung nilai 
+    let numOfHundreds = 
+      (change - remaind) <= obj["DIME"]
+      ? (change - remaind)
+      : obj["DIME"]
+    
+    // console.log(numOfHundreds)
+    
+    // masukan ke return nilai
+    changeObj.change.push(["DIME", gi(numOfHundreds)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['DIME'] -= numOfHundreds
+
+    // kurangi variable change
+    change = change - numOfHundreds
+  }
+
+  // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 5 && obj["NICKEL"] >= 5) {
+
+    // buat modulus
+    let remaind = change % 5
+
+    // penampung nilai 
+    let numOfHundreds = 
+      (change - remaind) <= obj["NICKEL"]
+      ? (change - remaind)
+      : obj["NICKEL"]
+    
+    // console.log(numOfHundreds)
+    
+    // masukan ke return nilai
+    changeObj.change.push(["NICKEL", gi(numOfHundreds)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['NICKEL'] -= numOfHundreds
+
+    // kurangi variable change
+    change = change - numOfHundreds
+  }
+
+   // cek apak kembalian lebih besar daripada satuan / rumus yg telah disediakan
+  if (change >= 1 && obj["PENNY"] >= 1) {
+
+    // buat modulus
+    let remaind = change % 1
+
+    // penampung nilai 
+    let numOfHundreds = 
+      (change - remaind) <= obj["PENNY"]
+      ? (change - remaind)
+      : obj["PENNY"]
+    
+    // console.log(numOfHundreds)
+    
+    // masukan ke return nilai
+    changeObj.change.push(["PENNY", gi(numOfHundreds)])
+
+    // kurangi uang di laci dengan kembalian / sisa
+    obj['PENNY'] -= numOfHundreds
+
+    // kurangi variable change
+    change = change - numOfHundreds
+  }
+
+  let remainingCID = Object.values(obj).reduce((a,b) => a + b)
+
+  // status 
+  if  (remainingCID > 0 && change === 0) {
+    changeObj.status = "OPEN"
+  } else if (change === 0) {
+    changeObj.status = 'CLOSED'
+    changeObj.change = cid;
+  } else {
+    changeObj.status = 'INSUFFICIENT_FUNDS'
+    changeObj.change = [];
+  }
+
+  // console.log(remainingCID, changeObj)
+
+  return changeObj;
+}
+
+checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+
 
 
 
